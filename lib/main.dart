@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sebha/ahadeth_details.dart';
 import 'package:sebha/home/home.dart';
 import 'package:sebha/sura_details.dart';
 
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
       routes:{
         HomeScreen.routeName: (context)=> HomeScreen(),
         SuraDetails.routeName: (context)=> SuraDetails(),
+        ahadethDetails.routeName: (context)=> ahadethDetails(),
       },
     );
 

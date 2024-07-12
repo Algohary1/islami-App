@@ -72,4 +72,5 @@ int selectedIndex=0;
     quranTab(),
     settingsTab(),
   ];
+
 }
