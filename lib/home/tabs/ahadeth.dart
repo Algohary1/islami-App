@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sebha/ahadeth_details.dart';
 import 'package:sebha/ahadeth_model.dart';
@@ -6,66 +7,19 @@ import 'package:sebha/ahadeth_model.dart';
 
 class ahadethTab extends StatefulWidget {
   ahadethTab({super.key});
-
   @override
   State<ahadethTab> createState() => _quranTabState();
 }
 
 class _quranTabState extends State<ahadethTab> {
-  List<String> ahadethNames = [
-  'الحديث الأول',
-  'الحديث الثاني',
-  'الحديث الثالث',
-  'الحديث الرابع',
-  'الحديث الخامس',
-  'الحديث السادس',
-  'الحديث السابع',
-  'الحديث الثامن',
-  'الحديث التاسع',
-  'الحديث العاشر',
-  'الحديث الحادي عشر',
-  'الحديث الثاني عشر',
-  'الحديث الثالث عشر',
-  'الحديث الرابع عشر',
-  'الحديث الخامس عشر',
-  'الحديث السادس عشر',
-  'الحديث السابع عشر',
-  'الحديث الثامن عشر',
-  'الحديث التاسع عشر',
-  'الحديث العشرون',
-  'الحديث الحادي والعشرون',
-  'الحديث الثاني والعشرون',
-  'الحديث الثالث والعشرون',
-  'الحديث الرابع والعشرون',
-  'الحديث الخامس والعشرون',
-  'الحديث السابع والعشرون',
-  'الحديث الثامن والعشرون',
-  'الحديث التاسع والعشرون',
-  'الحديث الثلاثــون',
-  'الـحديث الحادي والثلاثون',
-  'الحديث الثاني والثلاثون',
-  'الحديث الثالث والثلاثون',
-  'الحديث الرابع والثلاثون',
-  'الحديث الخامس والثلاثون',
-  'الحديث السادس والثلاثون',
-  'الحديث السابع والثلاثون',
-  'الـحديث الثامن والثلاثون',
-  'الحديث التاسع والثلاثون',
-  'الحديث الأربعون',
-  'الحديث الحادي والأربعون',
-  'الحديث الثاني والأربعـون',
-  'الحديث الثالث والأربعون',
-  'الحديث الرابع والأربعون',
-  'الـحديث الخامس والأربعون',
-  'الحديث السادس والأربعون',
-  'الحديث السابع والأربعون',
-  'الـحديث الثامن والأربعون',
-  'الحديث التاسع والأربعون',
-  'الحديث الخمسون',
-  ];
+  List<ahadethModel>allAhadeth=[];
 
   @override
   Widget build(BuildContext context) {
+    if(allAhadeth.isEmpty){
+      loadahadethFile();
+
+    }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -89,26 +43,48 @@ class _quranTabState extends State<ahadethTab> {
         Expanded(
           child: ListView.builder(
             itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.only(right: 40),
-                child: InkWell(
-                  onTap: (){
+              return InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, ahadethDetails.routeName,
+                    arguments: allAhadeth[index]
+                    );
 
-                    Navigator.pushNamed(context, ahadethDetails.routeName, arguments: ahadethModel(ahadethNames[index],index));
                   },
-                  child: Text(
-                    ahadethNames[index],
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.inter(
-                        fontSize: 25, fontWeight: FontWeight.w400),
+                  child: Text(allAhadeth[index].title,
+                  style: GoogleFonts.inter(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 25
                   ),
-                ),
-              );
+                    textAlign: TextAlign.center,
+                  ));
             },
-            itemCount: ahadethNames.length,
+            itemCount: allAhadeth.length,
           ),
         ),
       ],
     );
+
+  }
+
+  loadahadethFile() {
+    rootBundle.loadString('assets/files/ahadeth.txt').then((value) {
+      List<String> ahadeth = value.split('#');
+
+      for(int i=0; i<ahadeth.length;i++){
+
+        String hadethOne = ahadeth[i];
+        List<String> hadethLines = hadethOne.trim().split('\n');
+        String title = hadethLines[0];
+        hadethLines.removeAt(0);
+        List<String> content = hadethLines;
+        ahadethModel hadethModel=ahadethModel(title, content);
+        allAhadeth.add(hadethModel);
+        print(hadethModel.title);
+
+      }
+      setState(() {
+
+      });
+    });
   }
 }

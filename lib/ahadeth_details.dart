@@ -5,6 +5,7 @@ import 'package:sebha/ahadeth_model.dart';
 
 class ahadethDetails extends StatefulWidget {
   static const String routeName = 'ahadethDetails';
+
   const ahadethDetails({super.key});
 
   @override
@@ -13,12 +14,10 @@ class ahadethDetails extends StatefulWidget {
 
 class _ahadethDetailsState extends State<ahadethDetails> {
   List<String> verses = [];
+
   @override
   Widget build(BuildContext context) {
-    var model = ModalRoute.of(context)?.settings.arguments as ahadethModel;
-    if (verses.isEmpty) {
-      loadahadethFile(model.index);
-    }
+    var model=ModalRoute.of(context)?.settings.arguments as ahadethModel;
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
@@ -29,8 +28,7 @@ class _ahadethDetailsState extends State<ahadethDetails> {
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: Colors.transparent,
-          title: Text(
-            model.name,
+          title: Text(model.title,
             style: GoogleFonts.elMessiri(
                 fontWeight: FontWeight.w700, fontSize: 30),
           ),
@@ -48,7 +46,7 @@ class _ahadethDetailsState extends State<ahadethDetails> {
               return Padding(
                 padding: const EdgeInsets.all(10),
                 child: Text(
-                  '${verses[index]}(${index + 1})',
+                  model.content[index],
                   textAlign: TextAlign.right,
                   style: GoogleFonts.inter(
                     fontSize: 20,
@@ -57,20 +55,13 @@ class _ahadethDetailsState extends State<ahadethDetails> {
                 ),
               );
             },
-            itemCount: verses.length,
+            itemCount: model.content.length,
           ),
         ),
       ),
     );
+    }
+
   }
 
-  loadahadethFile(int index) async {
-    String ahadeth =
-        await rootBundle.loadString('assets/files/ahadeth/${index + 1}.txt');
 
-    List<String> ahadethLines = ahadeth.split('\n');
-    print(ahadethLines);
-    verses = ahadethLines;
-    setState(() {});
-  }
-}
