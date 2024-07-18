@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../my_theme_data.dart';
+
 class sebhaTab extends StatefulWidget {
   const sebhaTab({super.key});
 
@@ -34,7 +36,6 @@ class _sebhaTabState extends State<sebhaTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
       body: Padding(
         padding: const EdgeInsets.only(
           left: 70,
@@ -62,8 +63,9 @@ class _sebhaTabState extends State<sebhaTab> {
           ),
           Text(
             'عدد التسبيحات',
-            style: GoogleFonts.elMessiri(
-                fontWeight: FontWeight.w600, fontSize: 25),
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+              fontWeight: FontWeight.w600,
+            ),
           ),
           SizedBox(
             height: 25,
@@ -71,16 +73,15 @@ class _sebhaTabState extends State<sebhaTab> {
           Container(
               padding: EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: Color(0xFFB7935F),
+                color: MyThemeData.primaryColor,
                 borderRadius: BorderRadius.circular(25),
               ),
               child: Text(
                 counter.toString(),
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.white),
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
               )),
           SizedBox(
             height: 20,
@@ -88,15 +89,13 @@ class _sebhaTabState extends State<sebhaTab> {
           Container(
             padding: EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: Color(0xFFB7935F),
+              color: MyThemeData.primaryColor,
               borderRadius: BorderRadius.circular(25),
             ),
             child: Text(
               '${Zekr[index]}',
-              style: GoogleFonts.inter(
-                  fontSize: 25,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.white),
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  fontWeight: FontWeight.w400),
             ),
           ),
         ]),

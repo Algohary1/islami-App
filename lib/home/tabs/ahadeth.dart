@@ -4,6 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sebha/ahadeth_details.dart';
 import 'package:sebha/ahadeth_model.dart';
 
+import '../../my_theme_data.dart';
+
 
 class ahadethTab extends StatefulWidget {
   ahadethTab({super.key});
@@ -30,7 +32,7 @@ class _quranTabState extends State<ahadethTab> {
         ),
         Divider(
           thickness: 3,
-          color: Color(0xffB7935F),
+          color: MyThemeData.primaryColor,
         ),
         Text('الأحاديث', textAlign: TextAlign.center,style: GoogleFonts.elMessiri(
           fontSize: 25,
@@ -38,7 +40,7 @@ class _quranTabState extends State<ahadethTab> {
         ),),
         Divider(
           thickness: 3,
-          color: Color(0xffB7935F),
+          color: MyThemeData.primaryColor,
         ),
         Expanded(
           child: ListView.builder(

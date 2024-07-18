@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sebha/sura_model.dart';
 
+import '../../my_theme_data.dart';
 import '../../sura_details.dart';
 
 class quranTab extends StatefulWidget {
@@ -141,7 +142,7 @@ class _quranTabState extends State<quranTab> {
         ),
         Divider(
           thickness: 3,
-          color: Color(0xffB7935F),
+          color: MyThemeData.primaryColor,
         ),
         SizedBox(
           height: 20,
@@ -152,8 +153,10 @@ class _quranTabState extends State<quranTab> {
             Text(
               ' عدد الآيات ',
               textAlign: TextAlign.left,
-              style: GoogleFonts.elMessiri(
-                  fontWeight: FontWeight.w600, fontSize: 25),
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  fontWeight: FontWeight.w600
+              ,fontSize: 25
+              ),
             ),
             SizedBox(
               width: 9,
@@ -161,14 +164,14 @@ class _quranTabState extends State<quranTab> {
             Text(
               ' اسم السورة ',
               textAlign: TextAlign.right,
-              style: GoogleFonts.elMessiri(
-                  fontWeight: FontWeight.w600, fontSize: 25),
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  fontWeight: FontWeight.w600),
             ),
           ],
         ),
         Divider(
           thickness: 3,
-          color: Color(0xffB7935F),
+          color: MyThemeData.primaryColor,
         ),
         Expanded(
           child: ListView.builder(
@@ -183,8 +186,8 @@ class _quranTabState extends State<quranTab> {
                   child: Text(
                     suraNames[index],
                     textAlign: TextAlign.right,
-                    style: GoogleFonts.inter(
-                        fontSize: 25, fontWeight: FontWeight.w400),
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
               );

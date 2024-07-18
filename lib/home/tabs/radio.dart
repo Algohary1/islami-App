@@ -7,7 +7,6 @@ class radioTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -15,10 +14,10 @@ class radioTab extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-          Text('إذاعة القرأن الكريم', style: GoogleFonts.elMessiri(
-            fontWeight: FontWeight.w600,
-            fontSize: 25,
-          ),),
+          Text('إذاعة القرأن الكريم', style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+            fontWeight: FontWeight.w600
+          ),
+          ),
           SizedBox(
             height: 20,
           ),

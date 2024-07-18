@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sebha/sura_model.dart';
 
+import 'my_theme_data.dart';
+
 class SuraDetails extends StatefulWidget {
   static const String routeName='suraDetails';
   const SuraDetails({super.key});
@@ -25,17 +27,11 @@ class _SuraDetailsState extends State<SuraDetails> {
         image: DecorationImage(image: AssetImage('assets/images/main_bg.png'), fit: BoxFit.fill)
       ),
       child: Scaffold(
-        backgroundColor: Colors.transparent,
         appBar: AppBar(
-          centerTitle: true,
-          backgroundColor: Colors.transparent,
-          title: Text(model.name, style: GoogleFonts.elMessiri(
-            fontWeight: FontWeight.w700,
-            fontSize: 30
-          ),),
+          title: Text(model.name),
         ),
         body: Card(
-          color: Color(0xCCF8F8F8),
+          color: Colors.white,
           elevation: 4,
           shape: OutlineInputBorder(
             borderRadius: BorderRadius.circular(25),
