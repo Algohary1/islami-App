@@ -73,7 +73,7 @@ class _sebhaTabState extends State<sebhaTab> {
           Container(
               padding: EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: MyThemeData.primaryColor,
+                color: primaryColor,
                 borderRadius: BorderRadius.circular(25),
               ),
               child: Text(
@@ -89,7 +89,7 @@ class _sebhaTabState extends State<sebhaTab> {
           Container(
             padding: EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: MyThemeData.primaryColor,
+              color: primaryColor,
               borderRadius: BorderRadius.circular(25),
             ),
             child: Text(

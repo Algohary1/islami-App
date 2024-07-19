@@ -137,12 +137,13 @@ class _quranTabState extends State<quranTab> {
       children: [
         Image.asset(
           'assets/images/quran.png',
+
           height: 227,
           width: 205,
         ),
         Divider(
           thickness: 3,
-          color: MyThemeData.primaryColor,
+          color: primaryColor,
         ),
         SizedBox(
           height: 20,
@@ -171,7 +172,7 @@ class _quranTabState extends State<quranTab> {
         ),
         Divider(
           thickness: 3,
-          color: MyThemeData.primaryColor,
+          color: primaryColor,
         ),
         Expanded(
           child: ListView.builder(

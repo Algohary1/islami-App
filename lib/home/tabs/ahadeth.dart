@@ -32,7 +32,7 @@ class _quranTabState extends State<ahadethTab> {
         ),
         Divider(
           thickness: 3,
-          color: MyThemeData.primaryColor,
+          color: primaryColor,
         ),
         Text('الأحاديث', textAlign: TextAlign.center,style: GoogleFonts.elMessiri(
           fontSize: 25,
@@ -40,7 +40,7 @@ class _quranTabState extends State<ahadethTab> {
         ),),
         Divider(
           thickness: 3,
-          color: MyThemeData.primaryColor,
+          color: primaryColor,
         ),
         Expanded(
           child: ListView.builder(

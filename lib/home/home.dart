@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:sebha/home/tabs/ahadeth.dart';
 import 'package:sebha/home/tabs/quran1.dart';
 import 'package:sebha/home/tabs/radio.dart';
 import 'package:sebha/home/tabs/sebha.dart';
 import 'package:sebha/home/tabs/settings.dart';
 import 'package:sebha/my_theme_data.dart';
+import 'package:sebha/provider/my_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'HomeScreen';
@@ -21,9 +23,11 @@ int selectedIndex=0;
 
   @override
   Widget build(BuildContext context) {
+    var provider=Provider.of<MyProvider>(context);
     return Stack(children: [
       Image.asset(
-        'assets/images/main_bg.png',
+        provider.mode==ThemeMode.light?'assets/images/main_bg.png':
+        'assets/images/bg_dark.png',
         fit: BoxFit.fill,
         width: double.infinity,
       ),
@@ -44,15 +48,15 @@ int selectedIndex=0;
                 },
                 items: [
           BottomNavigationBarItem(icon: ImageIcon(AssetImage('assets/images/radio.png')), label: '',
-          backgroundColor: MyThemeData.primaryColor,),
+          ),
           BottomNavigationBarItem(icon: ImageIcon(AssetImage('assets/images/sebha_blue.png')), label: '',
-          backgroundColor: MyThemeData.primaryColor,),
+          ),
           BottomNavigationBarItem(icon: ImageIcon(AssetImage('assets/images/ahadeth.png')), label: '',
-          backgroundColor: MyThemeData.primaryColor,),
+          ),
           BottomNavigationBarItem(icon: ImageIcon(AssetImage('assets/images/moshaf.png')), label: '',
-          backgroundColor: MyThemeData.primaryColor,),
+          ),
           BottomNavigationBarItem(icon: Icon(Icons.settings,),label: '',
-          backgroundColor: MyThemeData.primaryColor,),
+          ),
         ]),
         body: tabs[selectedIndex],
       ),
