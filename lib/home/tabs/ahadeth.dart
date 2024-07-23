@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -34,7 +35,7 @@ class _quranTabState extends State<ahadethTab> {
           thickness: 3,
           color: primaryColor,
         ),
-        Text('الأحاديث', textAlign: TextAlign.center,style: GoogleFonts.elMessiri(
+        Text('ahadeth'.tr(), textAlign: TextAlign.center,style: GoogleFonts.elMessiri(
           fontSize: 25,
           fontWeight: FontWeight.w300
         ),),

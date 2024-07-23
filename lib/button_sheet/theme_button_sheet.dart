@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sebha/provider/my_provider.dart';
@@ -5,7 +6,9 @@ import 'package:sebha/provider/my_provider.dart';
 import '../my_theme_data.dart';
 
 class ThemeButtonSheet extends StatelessWidget {
-  const ThemeButtonSheet({super.key});
+  ThemeButtonSheet({super.key});
+
+  bool? click;
 
   @override
   Widget build(BuildContext context) {
@@ -25,17 +28,19 @@ class ThemeButtonSheet extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Light',
+                    'light'.tr(),
                     style: Theme.of(context)
                         .textTheme
                         .bodyMedium
                         ?.copyWith(color: primaryColor),
                   ),
-                  Icon(
-                    Icons.done,
-                    color: primaryColor,
-                    size: 30,
-                  ),
+                  click == true
+                      ? Icon(
+                          Icons.done,
+                          color: primaryColor,
+                          size: 30,
+                        )
+                      : SizedBox(),
                 ],
               ),
             ),
@@ -49,7 +54,14 @@ class ThemeButtonSheet extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Dark'),
+                  Text('dark'.tr()),
+                  click != true
+                      ? Icon(
+                          Icons.done,
+                          size: 30,
+                          color: primaryColor,
+                        )
+                      : SizedBox(),
                   // Icon(Icons.done),
                 ],
               ),

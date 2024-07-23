@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -33,7 +34,7 @@ int selectedIndex=0;
       ),
       Scaffold(
         appBar: AppBar(
-          title: Text('إسلامي', style:
+          title: Text('islami'.tr(), style:
           Theme.of(context).textTheme.bodyLarge,
             ),
 

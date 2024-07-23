@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sebha/sura_model.dart';
@@ -152,7 +153,7 @@ class _quranTabState extends State<quranTab> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
-              ' عدد الآيات ',
+              'numbers_of_ayah'.tr(),
               textAlign: TextAlign.left,
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   fontWeight: FontWeight.w600
@@ -163,7 +164,7 @@ class _quranTabState extends State<quranTab> {
               width: 9,
             ),
             Text(
-              ' اسم السورة ',
+              'sura_name'.tr(),
               textAlign: TextAlign.right,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   fontWeight: FontWeight.w600),

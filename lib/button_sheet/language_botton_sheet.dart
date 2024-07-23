@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:sebha/my_theme_data.dart';
 
@@ -13,32 +14,56 @@ class LanguageBottonSheet extends StatelessWidget {
         child: Column(
           // mainAxisSize: MainAxisSize.min,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Arabic',
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyMedium
-                      ?.copyWith(color: primaryColor),
-                ),
-                Icon(
-                  Icons.done,
-                  color: primaryColor,
-                  size: 30,
-                ),
-              ],
+            InkWell(
+              onTap: () {
+                context.setLocale(Locale('ar'));
+                Navigator.pop(context);
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('arabic'.tr(),
+                      style: context.locale == Locale("ar")
+                          ? Theme.of(context)
+                              .textTheme
+                              .bodyMedium
+                              ?.copyWith(color: primaryColor)
+                          : Theme.of(context).textTheme.bodyMedium),
+                  context.locale==Locale("ar")?Icon(
+                    Icons.done,
+                    color: primaryColor,
+                    size: 30,
+                  ):SizedBox(),
+                ],
+              ),
             ),
             SizedBox(
               height: 24,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('English'),
-                Icon(Icons.done),
-              ],
+            InkWell(
+              onTap: () {
+                context.setLocale(Locale('en'));
+                Navigator.pop(context);
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('english'.tr(),
+                      style: context.locale != Locale("ar")
+                          ? Theme.of(context)
+                              .textTheme
+                              .bodyMedium
+                              ?.copyWith(color: primaryColor)
+                          : Theme.of(context).textTheme.bodyMedium),
+                  context.locale != Locale("ar")
+                      ? Icon(
+                          Icons.done,
+                          size: 30,
+                          color: primaryColor,
+                        )
+                      : SizedBox(),
+                ],
+              ),
             )
           ],
         ),

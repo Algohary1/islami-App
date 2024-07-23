@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:sebha/my_theme_data.dart';
 
@@ -14,7 +15,7 @@ class settingsTab extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Theme'),
+          Text('theme'.tr()),
           SizedBox(
             height: 12,
           ),
@@ -34,13 +35,13 @@ class settingsTab extends StatelessWidget {
                 borderRadius: BorderRadius.circular(22),
                 border: Border.all(color: primaryColor)
               ),
-              child: Text('light'),
+              child: Text('light'.tr()),
             ),
           ),
           SizedBox(
             height: 44,
           ),
-          Text('Language'),
+          Text('language'.tr()),
           SizedBox(
             height: 12,
           ),
@@ -61,7 +62,7 @@ class settingsTab extends StatelessWidget {
                   borderRadius: BorderRadius.circular(22),
                   border: Border.all(color: primaryColor)
               ),
-              child: Text('Arabic'),
+              child: Text('arabic'.tr()),
             ),
           )
         ],
