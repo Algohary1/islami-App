@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sebha/sura_model.dart';
 
+import '../../my_theme_data.dart';
 import '../../sura_details.dart';
 
 class quranTab extends StatefulWidget {
@@ -136,12 +138,13 @@ class _quranTabState extends State<quranTab> {
       children: [
         Image.asset(
           'assets/images/quran.png',
+
           height: 227,
           width: 205,
         ),
         Divider(
           thickness: 3,
-          color: Color(0xffB7935F),
+          color: primaryColor,
         ),
         SizedBox(
           height: 20,
@@ -150,25 +153,27 @@ class _quranTabState extends State<quranTab> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
-              ' عدد الآيات ',
+              'numbers_of_ayah'.tr(),
               textAlign: TextAlign.left,
-              style: GoogleFonts.elMessiri(
-                  fontWeight: FontWeight.w600, fontSize: 25),
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  fontWeight: FontWeight.w600
+              ,fontSize: 25
+              ),
             ),
             SizedBox(
               width: 9,
             ),
             Text(
-              ' اسم السورة ',
+              'sura_name'.tr(),
               textAlign: TextAlign.right,
-              style: GoogleFonts.elMessiri(
-                  fontWeight: FontWeight.w600, fontSize: 25),
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  fontWeight: FontWeight.w600),
             ),
           ],
         ),
         Divider(
           thickness: 3,
-          color: Color(0xffB7935F),
+          color: primaryColor,
         ),
         Expanded(
           child: ListView.builder(
@@ -183,8 +188,8 @@ class _quranTabState extends State<quranTab> {
                   child: Text(
                     suraNames[index],
                     textAlign: TextAlign.right,
-                    style: GoogleFonts.inter(
-                        fontSize: 25, fontWeight: FontWeight.w400),
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
               );

@@ -1,10 +1,14 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:sebha/home/tabs/ahadeth.dart';
 import 'package:sebha/home/tabs/quran1.dart';
 import 'package:sebha/home/tabs/radio.dart';
 import 'package:sebha/home/tabs/sebha.dart';
 import 'package:sebha/home/tabs/settings.dart';
+import 'package:sebha/my_theme_data.dart';
+import 'package:sebha/provider/my_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'HomeScreen';
@@ -20,20 +24,20 @@ int selectedIndex=0;
 
   @override
   Widget build(BuildContext context) {
+    var provider=Provider.of<MyProvider>(context);
     return Stack(children: [
       Image.asset(
-        'assets/images/main_bg.png',
+        provider.mode==ThemeMode.light?'assets/images/main_bg.png':
+        'assets/images/bg_dark.png',
         fit: BoxFit.fill,
         width: double.infinity,
       ),
       Scaffold(
-        backgroundColor: Colors.transparent,
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          centerTitle: true,
-          title: Text('إسلامي',
-              style: GoogleFonts.elMessiri(
-                  fontSize: 30, fontWeight: FontWeight.w700)),
+          title: Text('islami'.tr(), style:
+          Theme.of(context).textTheme.bodyLarge,
+            ),
+
         ),
         bottomNavigationBar:
             BottomNavigationBar(
@@ -43,23 +47,17 @@ int selectedIndex=0;
                   setState(() {
                   });
                 },
-                backgroundColor: Color(0xFFB7935F),
-                type: BottomNavigationBarType.shifting,
-                selectedItemColor: Colors.black,
-                unselectedItemColor: Colors.white,
-                showUnselectedLabels: false,
-                showSelectedLabels: false,
                 items: [
           BottomNavigationBarItem(icon: ImageIcon(AssetImage('assets/images/radio.png')), label: '',
-          backgroundColor: Color(0xFFB7935F),),
+          ),
           BottomNavigationBarItem(icon: ImageIcon(AssetImage('assets/images/sebha_blue.png')), label: '',
-          backgroundColor: Color(0xFFB7935F),),
+          ),
           BottomNavigationBarItem(icon: ImageIcon(AssetImage('assets/images/ahadeth.png')), label: '',
-          backgroundColor: Color(0xFFB7935F),),
+          ),
           BottomNavigationBarItem(icon: ImageIcon(AssetImage('assets/images/moshaf.png')), label: '',
-          backgroundColor: Color(0xFFB7935F),),
+          ),
           BottomNavigationBarItem(icon: Icon(Icons.settings,),label: '',
-          backgroundColor: Color(0xFFB7935F),),
+          ),
         ]),
         body: tabs[selectedIndex],
       ),
@@ -72,4 +70,5 @@ int selectedIndex=0;
     quranTab(),
     settingsTab(),
   ];
+
 }
