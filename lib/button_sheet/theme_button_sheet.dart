@@ -23,6 +23,7 @@ class ThemeButtonSheet extends StatelessWidget {
             InkWell(
               onTap: () {
                 pro.changeTheme(ThemeMode.light);
+                Navigator.pop(context);
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -50,6 +51,7 @@ class ThemeButtonSheet extends StatelessWidget {
             InkWell(
               onTap: () {
                 pro.changeTheme(ThemeMode.dark);
+                Navigator.pop(context);
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

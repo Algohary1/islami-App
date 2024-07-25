@@ -12,7 +12,7 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   runApp(ChangeNotifierProvider(
-      create: (context) => MyProvider(),
+      create: (context) => MyProvider()..getTheme(),
       child: EasyLocalization(
           supportedLocales: [Locale('en'), Locale('ar')],
           path: 'assets/translation', // <-- change the path of the translation files
